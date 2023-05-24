@@ -15,11 +15,11 @@ mkdir $OUTPUT_DIRECTORY
 count=0
 for file in `find $INPUT_DIRECTORY -type f -iname "*.cr2"`
 do
-	let "count+=1"
-	filename=$(basename -- "$file")
-	filename="${filename%.*}"
-	dcraw -c -w ${file} | convert - ${OUTPUT_DIRECTORY}/${filename}.jpeg
-	echo "File ${count} processed"
+  let "count+=1"
+  filename=$(basename -- "$file")
+  filename="${filename%.*}"
+  dcraw -c -w ${file} | convert - ${OUTPUT_DIRECTORY}/${filename}.jpeg
+  echo "File ${count} processed"
 done
 thumbgen -w 4 -r -d $OUTPUT_DIRECTORY
 echo "Total prepared ${count} image(s)"
